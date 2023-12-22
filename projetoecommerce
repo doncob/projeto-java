@@ -1,0 +1,75 @@
+package projeto_java;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class projetoecommerce {
+
+	public static void main(String[] args) {
+			int op1;
+		
+			Scanner leia = new Scanner(System.in);
+		
+	ArrayList<String> estoque = new ArrayList<String>(); 
+	do {		
+	    System.out.println("\n Selecione a opção");
+		System.out.println("\n [1] Visualizar estoque:");
+	    System.out.println("\n [2] Apagar produto do estoque:");
+	    System.out.println("\n [3] Atualizar produto do estoque:");
+	    System.out.println("\n [4] Adicionar produto ao estoque:");
+	    System.out.println("\n [0] Sair do programa:");
+	
+	    op1 = leia.nextInt();
+	switch(op1) {
+	case 1:
+		System.out.println("\nOs produtos do estoque são: ");
+		System.out.println(estoque);
+		break;
+	
+	case 2:
+		leia.nextLine();
+		System.out.println("\nDigite o nome do produto para remover do estoque: ");
+		String produtor = leia.nextLine();
+		if(estoque.contains(produtor)) {
+			estoque.remove(produtor);
+			
+		}else {
+			System.out.println("\nProduto não existe no estoque!!!");
+		}
+		System.out.println(estoque);
+		break;
+
+	case 3:
+		leia.nextLine();
+		System.out.println("\nDigite o produto que deseja atualizar: ");
+		String verifica = leia.nextLine();
+		System.out.println("\nDigite o produto que entrará no lugar do "+verifica+" : ");
+		String novo = leia.nextLine();
+		
+		if(estoque.contains(verifica)) {
+			estoque.remove(verifica);
+			estoque.add(novo);
+		}else {
+			System.out.println("\nProduto não existe no estoque!!!");
+		}
+		System.out.println(estoque);
+		break;
+
+	case 4:
+		System.out.println("Digite o tipo de produto:");
+		String tipo = leia.nextLine();
+		System.out.println("Digite o preço do produto:");
+		float preco = leia.nextFloat();
+		System.out.println("Digite o codigo do produto (7 dígitos):");
+		long codigoprod = leia.nextLong();
+		break;
+	case 0:
+       System.out.println("Saindo do programa!");
+		break;
+    default:
+	   System.out.println("Opção inválida!");
+    	break;}
+	}while(op1!=0);
+
+	}
+}
